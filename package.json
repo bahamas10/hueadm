@@ -1,0 +1,38 @@
+{
+  "name": "hueadm",
+  "description": "A command line management interface to phillips hue",
+  "author": "Dave Eddy <dave@daveeddy.com> (http://www.daveeddy.com)",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/bahamas10/hueadm",
+    "type": "git"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "hueadm": "./bin/hueadm"
+  },
+  "dependencies": {
+    "autocast": "0.0.4",
+    "cmdln": "^4.2.1",
+    "color-convert": "^1.9.0",
+    "css-color-names": "0.0.4",
+    "deepmerge": "^1.5.1",
+    "hue-sdk": "0.0.3",
+    "latest": "^0.2.0",
+    "mired": "0.0.0",
+    "tabula": "^1.9.0",
+    "verror": "^1.10.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "keywords": [
+    "hue",
+    "phillips",
+    "automation"
+  ],
+  "license": "MIT"
+}
