@@ -469,16 +469,16 @@ automatically prepend `/api/<username>` to the endpoint given.
 
     $ hueadm request /lights/15
     state:
-	on: true
-	bri: 100
-	hue: 14884
-	sat: 144
-	effect: none
-	xy: [0.4597, 0.4103]
-	ct: 370
-	alert: none
-	colormode: ct
-	reachable: true
+        on: true
+        bri: 100
+        hue: 14884
+        sat: 144
+        effect: none
+        xy: [0.4597, 0.4103]
+        ct: 370
+        alert: none
+        colormode: ct
+        reachable: true
     type: 'Extended color light'
     name: foobar
     modelid: LCT001
@@ -491,14 +491,14 @@ Give body as CLI args
     $ hueadm request -j -X PUT /lights/15/state on=true bri=255
     [
       {
-	"success": {
-	  "/lights/15/state/on": true
-	}
+        "success": {
+          "/lights/15/state/on": true
+        }
       },
       {
-	"success": {
-	  "/lights/15/state/bri": 254
-	}
+        "success": {
+          "/lights/15/state/bri": 254
+        }
       }
     ]
 
@@ -507,14 +507,14 @@ Give body as JSON
     $ echo '{"on":true,"bri":255}' | hueadm request -j -X PUT /lights/15/state -
     [
       {
-	"success": {
-	  "/lights/15/state/on": true
-	}
+        "success": {
+          "/lights/15/state/on": true
+        }
       },
       {
-	"success": {
-	  "/lights/15/state/bri": 254
-	}
+        "success": {
+          "/lights/15/state/bri": 254
+        }
       }
     ]
 
