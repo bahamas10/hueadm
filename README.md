@@ -15,7 +15,9 @@ First, install [Node.js](http://nodejs.org), then:
 Getting Started
 ---------------
 
-### Find a bridge
+### Setup
+
+#### Find a bridge
 
 To get started you must find the IP address of the Hue bridge you would like to
 manage.  If you know the IP address or the hostname of the bridge you would
@@ -27,7 +29,7 @@ like to manage you can skip this step.
 
 On my network `10.0.1.80` is the IP of the bridge I'll be controlling.
 
-### Register a user
+#### Register a user
 
 Now that we have the IP of the bridge we want to control, we can now create a
 new account for the `hueadm` tool to use.
@@ -72,7 +74,7 @@ bridge to verify the new user account is working.
     27  Front Yard                 on      254         false
     28  Hue color light 1          on      254         false
 
-### Create a config
+#### Create a config
 
 Instead of passing `-H` and `-U` for every request, we can create a config file
 for `hueadm` to use if those arguments are not specified.
@@ -84,7 +86,9 @@ for `hueadm` to use if those arguments are not specified.
         "host": "10.0.1.80"
     }
 
-### Get light information
+### Lights
+
+#### Get light information
 
 Now, we can run the same command like:
 
@@ -143,7 +147,7 @@ to be JSON.
       "swversion": "5.50.1.19085"
     }
 
-### Setting light state
+#### Setting light state
 
 Using the same `light` subcommand, the state can be set.  There are a lot of
 different ways to change the state of the lights.
@@ -266,7 +270,7 @@ Clear the color loop (and any other) effect
     -
         success: {/lights/15/state/effect: none}
 
-### Modify a light
+#### Modify a light
 
 Using the `lights` subcommand, it is also possible to filter for a specific ID
 to get a short synopsis of the light state.
@@ -285,7 +289,9 @@ Rename the light to `foobar`
     ID  NAME    STATUS  BRIGHTNESS  REACHABLE
     15  foobar  on      127         true
 
-### List light groups
+### Groups
+
+#### List light groups
 
 In order to control more than 1 light at a time, a group of lights must be
 created.  The group can then be controlled the same way a single light is
@@ -301,7 +307,7 @@ To list all groups
 Even though it doesn't show it, group `0` always exists on the bridge and
 contains every light known.  This group is special and cannot be deleted.
 
-### Create a light group
+#### Create a light group
 
 To create a light group
 
@@ -340,7 +346,7 @@ Or in a simpler way with
     ID  NAME        TYPE        LIGHTS
     1   Test Group  LightGroup  1,2,3,4
 
-### Modify a group
+#### Modify a group
 
 Any property of the group can be modified with `modify-group`
 
@@ -364,7 +370,7 @@ To change the lights in a group
     ID  NAME       TYPE        LIGHTS
     1   Foo Group  LightGroup  5,6,7,8
 
-### Set a group state
+#### Set a group state
 
 All state modifications to a single light can be used to modify a group as well
 
@@ -398,7 +404,7 @@ Clear all effects
     -
         success: {/groups/1/action/effect: none}
 
-### Delete a group
+#### Delete a group
 
 To delete the group run
 
@@ -406,6 +412,111 @@ To delete the group run
     -
         success: '/groups/1 deleted'
 
+### Users
+
+#### List users
+
+To list all users on a bridge (I've modified some IDs for privacy reasons)
+
+    $ hueadm users
+    ID                                        NAME               CREATION  LASTUSE
+    1                                         node-hue-cli       3y        1s
+    2                                         hue-cli#dave       2d        11h
+    3                                         hue_ios_app#black  1d        21h
+    4                                         gohue#papertigers  1w        1w
+    f28jfl3gtltQw4r4gKLEtVFsfJcBGE87A1RaAXgt  hueadm#dave        11h       1s
+
+#### See a specific user
+
+To see our current username we can do
+
+    $ hueadm users id=f28jfl3gtltQw4r4gKLEtVFsfJcBGE87A1RaAXgt
+    ID                                        NAME         CREATION  LASTUSE
+    f28jfl3gtltQw4r4gKLEtVFsfJcBGE87A1RaAXgt  hueadm#dave  11h       2s
+
+Or
+
+    $ hueadm user f28jfl3gtltQw4r4gKLEtVFsfJcBGE87A1RaAXgt
+    'last use date': '2017-09-04T16:56:26'
+    'create date': '2017-09-04T05:51:40'
+    name: 'hueadm#dave'
+
+#### Delete a user
+
+To delete our user
+
+    $ hueadm delete-user f28jfl3gtltQw4r4gKLEtVFsfJcBGE87A1RaAXgt
+    -
+        success: '/config/whitelist/f28jfl3gtltQw4r4gKLEtVFsfJcBGE87A1RaAXgt deleted'
+
+**NOTE:** If you do this, you will need to register a new username
+
+### Misc.
+
+#### Config
+
+To get the full bridge config, use:
+
+    $ hueadm config
+    name: 'Philips hue'
+    zigbeechannel: 20
+    ... snipped ...
+
+#### Raw request
+
+To make a raw request to the bridge, use the `request` subcommand.  This will
+automatically prepend `/api/<username>` to the endpoint given.
+
+    $ hueadm request /lights/15
+    state:
+	on: true
+	bri: 100
+	hue: 14884
+	sat: 144
+	effect: none
+	xy: [0.4597, 0.4103]
+	ct: 370
+	alert: none
+	colormode: ct
+	reachable: true
+    type: 'Extended color light'
+    name: foobar
+    modelid: LCT001
+    manufacturername: Philips
+    uniqueid: 'removed'
+    swversion: 5.50.1.19085
+
+Give body as CLI args
+
+    $ hueadm request -j -X PUT /lights/15/state on=true bri=255
+    [
+      {
+	"success": {
+	  "/lights/15/state/on": true
+	}
+      },
+      {
+	"success": {
+	  "/lights/15/state/bri": 254
+	}
+      }
+    ]
+
+Give body as JSON
+
+    $ echo '{"on":true,"bri":255}' | hueadm request -j -X PUT /lights/15/state -
+    [
+      {
+	"success": {
+	  "/lights/15/state/on": true
+	}
+      },
+      {
+	"success": {
+	  "/lights/15/state/bri": 254
+	}
+      }
+    ]
 
 Usage
 -----
