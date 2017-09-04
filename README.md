@@ -320,25 +320,25 @@ The group has been created with the id `1`, we can see it with
     $ hueadm group 1
     name: 'Test Group'
     lights:
-    - '1'
-    - '2'
-    - '3'
-    - '4'
+        - '1'
+        - '2'
+        - '3'
+        - '4'
     type: LightGroup
     state:
-    all_on: true
-    any_on: true
-    recycle: false
+        all_on: true
+        any_on: true
+        recycle: false
     action:
-    on: true
-    bri: 254
-    hue: 14988
-    sat: 141
-    effect: none
-    xy: [0.4575, 0.4101]
-    ct: 365
-    alert: select
-    colormode: xy
+        on: true
+        bri: 254
+        hue: 14988
+        sat: 141
+        effect: none
+        xy: [0.4575, 0.4101]
+        ct: 365
+        alert: select
+        colormode: xy
 
 Or in a simpler way with
 
