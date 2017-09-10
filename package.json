@@ -2,7 +2,7 @@
   "name": "hueadm",
   "description": "A command line management interface to phillips hue",
   "author": "Dave Eddy <dave@daveeddy.com> (http://www.daveeddy.com)",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "url": "https://github.com/bahamas10/hueadm",
     "type": "git"
