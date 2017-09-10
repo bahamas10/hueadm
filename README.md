@@ -154,10 +154,13 @@ different ways to change the state of the lights.
 
 - `on`: turn the light on
 - `off`: turn the light off
-- `reset`: clear any and all effects on a light
+- `clear`: clear any and all effects on a light
+- `reset`: clear any and all effects on a light and set it to the "default" color (as if it just turned on)
 - `select`: flash the light once
 - `lselect`: flash the light for 15 seconds (can be cancelled with reset)
 - `colorloop`: enable the color loop effect
+- `[-+=]<num>`: set brightness, ie: `=50`, `-20`, `+40`, all values out of 254
+- `[-+=]<num>%`: set brightness, ie: `=50%`, `-20%`, `+40%`, all values out of 100
 - `-`: read state JSON object from stdin
 - `[0-9]+K`: set the light to a color based on Kelvin. ie. `2700K`, `5000k`, etc.
 - `<colorname>`: set the light to a color name (using CSS color names). ie. `blue`, `red`, `magenta`
