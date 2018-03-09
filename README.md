@@ -343,11 +343,37 @@ The group has been created with the id `1`, we can see it with
         alert: select
         colormode: xy
 
+You may also specify a group using its name
+
+    $ hueadm group 'Test Group'
+    name: 'Test Group'
+    lights:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+    type: LightGroup
+    state:
+        all_on: true
+        any_on: true
+        recycle: false
+    action:
+        on: true
+        bri: 254
+        hue: 14988
+        sat: 141
+        effect: none
+        xy: [0.4575, 0.4101]
+        ct: 365
+        alert: select
+        colormode: xy
+
 Or in a simpler way with
 
     $ hueadm groups id=1
     ID  NAME        TYPE        LIGHTS
     1   Test Group  LightGroup  1,2,3,4
+
 
 #### Modify a group
 
