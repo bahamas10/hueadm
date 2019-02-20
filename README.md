@@ -610,7 +610,7 @@ Usage
         create-scene    Create a scene
         modify-scene    Modify a scene
         delete-scene    Delete a scene
-        recall-scene    Recalls a scene
+        recall-scene    Recalls a scene on a group
 
       Sensors:
         sensors         List all sensors
