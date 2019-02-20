@@ -433,6 +433,18 @@ Clear all effects
     -
         success: {/groups/1/action/effect: none}
 
+Groups also support recalling/loading of scenes. Either using
+
+    $ hueadm group 1 scene=<sceneID>
+    -
+        success: {/groups/1/action/scene: <sceneID>}
+
+or
+
+    $ hueadm recall-scene <sceneID> Garage
+    -
+        success: {/groups/1/action/scene: <sceneID>}
+
 #### Delete a group
 
 To delete the group run
@@ -598,6 +610,7 @@ Usage
         create-scene    Create a scene
         modify-scene    Modify a scene
         delete-scene    Delete a scene
+        recall-scene    Recalls a scene
 
       Sensors:
         sensors         List all sensors
