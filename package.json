@@ -12,15 +12,16 @@
     "hueadm": "./bin/hueadm"
   },
   "dependencies": {
+    "assert-plus": "^1.0.0",
     "autocast": "0.0.4",
-    "cmdln": "^4.2.1",
-    "color-convert": "^1.9.0",
-    "css-color-names": "0.0.4",
-    "deepmerge": "^1.5.1",
-    "hue-sdk": "0.0.3",
+    "cmdln": "^4.4.0",
+    "color-convert": "^2.0.0",
+    "css-color-names": "^1.0.1",
+    "deepmerge": "^3.2.0",
+    "hue-sdk": "0.1.0",
     "latest": "^0.2.0",
     "mired": "0.0.0",
-    "tabula": "^1.9.0",
+    "tabula": "^1.10.0",
     "verror": "^1.10.0",
     "yamljs": "^0.3.0"
   },
