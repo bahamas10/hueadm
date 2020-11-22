@@ -42,25 +42,25 @@ jobs:
         password: ${{ secrets.GHCRIO_PAT }}
         logout: true
       
-#    - name: Build an Publish Image
-#      id: docker_build
-#      uses: docker/build-push-action@v2
-#      with:
-#        push: true
-#        tags: |
-#          mmuffins/hueadm:latest
-#          mmuffins/hueadm:${{ steps.prep.outputs.nodePackageVer }}
-#          ghcr.io/mmuffins/hueadm:latest
-#          ghcr.io/mmuffins/hueadm:${{ steps.prep.outputs.nodePackageVer }}
-#        context: ${{ GITHUB.WORKSPACE }}
-#        file: docker/Dockerfile
-#        platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
-#        labels: |
-#          org.opencontainers.image.title=${{ github.event.repository.name }}
-#          org.opencontainers.image.description=${{ github.event.repository.description }}
-#          org.opencontainers.image.url=${{ github.event.repository.html_url }}
-#          org.opencontainers.image.source=${{ github.event.repository.clone_url }}
-#          org.opencontainers.image.revision=${{ github.sha }}
-#          org.opencontainers.image.created=${{ steps.prep.outputs.created }}
-#          org.opencontainers.image.version=${{ steps.prep.outputs.nodePackageVer }}
-#          org.opencontainers.image.licenses='MIT'
+    - name: Build an Publish Image
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: |
+          mmuffins/hueadm:latest
+          mmuffins/hueadm:${{ steps.prep.outputs.nodePackageVer }}
+          ghcr.io/mmuffins/hueadm:latest
+          ghcr.io/mmuffins/hueadm:${{ steps.prep.outputs.nodePackageVer }}
+        context: ${{ GITHUB.WORKSPACE }}
+        file: docker/Dockerfile
+        platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
+        labels: |
+          org.opencontainers.image.title=${{ github.event.repository.name }}
+          org.opencontainers.image.description=${{ github.event.repository.description }}
+          org.opencontainers.image.url=${{ github.event.repository.html_url }}
+          org.opencontainers.image.source=${{ github.event.repository.clone_url }}
+          org.opencontainers.image.revision=${{ github.sha }}
+          org.opencontainers.image.created=${{ steps.prep.outputs.created }}
+          org.opencontainers.image.version=${{ steps.prep.outputs.nodePackageVer }}
+          org.opencontainers.image.licenses='MIT'
