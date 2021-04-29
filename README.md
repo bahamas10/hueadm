@@ -119,6 +119,11 @@ To get information about a specific light:
     uniqueid: 'removed'
     swversion: 5.50.1.19085
 
+Lights can also be identified by name, as long as the name is unique:
+
+    $ hueadm light "Test Light 1"
+    [same output as above]
+
 All subcommands allow for `-j` or `--json` to be specified to force the output
 to be JSON.
 
@@ -171,7 +176,7 @@ Turn a light on or off
     $ hueadm light 15 off
     -
         success: {/lights/15/state/on: false}
-    $ hueadm light 15 on
+    $ hueadm light "Test Light 1" on
     -
         success: {/lights/15/state/on: true}
 
