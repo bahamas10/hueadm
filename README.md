@@ -159,6 +159,7 @@ different ways to change the state of the lights.
 
 - `on`: turn the light on
 - `off`: turn the light off
+- `toggle`: toggle the current on/of state of a light
 - `clear`: clear any and all effects on a light
 - `reset`: clear any and all effects on a light and set it to the "default" color (as if it just turned on)
 - `select`: flash the light once
